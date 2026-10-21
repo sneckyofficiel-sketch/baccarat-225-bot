@@ -1,6 +1,18 @@
 import os
 import telebot
 from telebot import types
+import threading
+from flask import Flask
+
+app = Flask(__name__)
+@app.route('/')
+def home():
+    return "Baccarat 225 Bot Live!"
+
+def run_flask():
+    app.run(host='0.0.0.0', port=10000)
+
+threading.Thread(target=run_flask, daemon=True).start()
 
 TOKEN = os.environ.get("BOT_TOKEN")
 if not TOKEN:
